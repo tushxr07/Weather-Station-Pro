@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Weather Station</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1>Weather Station Pro</h1>
+            <p>Professional weather insights at your fingertips</p>
+        </header>
+
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" class="search-input" id="cityInput" placeholder="Search for any city worldwide...">
+                <button class="btn btn-primary" onclick="searchWeather()">
+                    🔍 Search
+                </button>
+                <button class="btn btn-secondary" onclick="getCurrentLocation()">
+                    📍 My Location
+                </button>
+            </div>
+            
+            <div class="quick-cities">
+                <button class="quick-city" onclick="quickSearch('New York')">New York</button>
+                <button class="quick-city" onclick="quickSearch('London')">London</button>
+                <button class="quick-city" onclick="quickSearch('Tokyo')">Tokyo</button>
+                <button class="quick-city" onclick="quickSearch('Paris')">Paris</button>
+                <button class="quick-city" onclick="quickSearch('Sydney')">Sydney</button>
+                <button class="quick-city" onclick="quickSearch('Dubai')">Dubai</button>
+            </div>
+        </section>
+
+        <div id="weatherContent" class="hidden">
+            <div class="weather-dashboard">
+                <div class="main-weather-card">
+                    <div class="weather-header">
+                        <div class="location-info">
+                            <h2 id="cityName">Loading...</h2>
+                            <div class="date-time" id="currentDateTime"></div>
+                        </div>
+                        <div class="current-temp">
+                            <div class="temp-display">
+                                <span id="mainTemp">--</span>
+                                <span class="weather-icon-main" id="mainIcon">🌤️</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-description" id="weatherDesc">Clear sky</div>
+                    
+                    <div class="weather-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">💨</span>
+                            <div class="stat-value" id="windSpeed">--</div>
+                            <div class="stat-label">Wind Speed</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">💧</span>
+                            <div class="stat-value" id="humidity">--</div>
+                            <div class="stat-label">Humidity</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👁️</span>
+                            <div class="stat-value" id="visibility">--</div>
+                            <div class="stat-label">Visibility</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">🌡️</span>
+                            <div class="stat-value" id="feelsLike">--</div>
+                            <div class="stat-label">Feels Like</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="hourly-forecast">
+                        <h3 class="section-title">
+                            ⏰ Hourly Forecast
+                        </h3>
+                        <div class="hourly-items" id="hourlyItems">
+                        </div>
+                    </div>
+
+                    <div class="air-quality">
+                        <h3 class="section-title">
+                            🌬️ Air Quality
+                        </h3>
+                        <div class="air-quality-indicator">
+                            <div class="aqi-circle aqi-good" id="aqiCircle">42</div>
+                            <div class="aqi-info">
+                                <h4 id="aqiStatus">Good</h4>
+                                <p id="aqiDesc">Air quality is satisfactory</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weekly-forecast">
+                <h3 class="section-title">
+                    📅 7-Day Forecast
+                </h3>
+                <div class="forecast-grid" id="weeklyForecast">
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="loading-spinner"></div>
+            <p>Fetching weather data from satellites...</p>
+        </div>
+
+        <div id="error" class="error hidden">
+            <h3>🚫 Weather Data Unavailable</h3>
+            <p>We couldn't retrieve weather information for your location.</p>
+            <p><strong>Possible solutions:</strong></p>
+            <ul style="text-align: left; margin: 15px 0; padding-left: 20px;">
+                <li>Check your internet connection</li>
+                <li>Try a different city name</li>
+                <li>Verify location permissions</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
