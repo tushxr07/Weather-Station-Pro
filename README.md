@@ -1,6 +1,6 @@
 # Weather-Station-Pro
 
-A fast, responsive weather app supporting 200,000+ global locations with real-time data from the OpenWeatherMap API.
+A fast, responsive weather app supporting 2000+ global locations with real-time data from the OpenWeatherMap API.
 
 Features:
 🌍 Global search with sub-1-second responses
